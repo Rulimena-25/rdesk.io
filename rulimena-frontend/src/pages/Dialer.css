@@ -1,0 +1,811 @@
+.dialer-container {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 1rem;
+}
+
+.dialer-header {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem 2rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
+
+.dialer-header h1 {
+  color: #333;
+  margin: 0 0 1rem 0;
+}
+
+.dialer-tabs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dialer-tabs button {
+  padding: 0.5rem 1rem;
+  background-color: #e9ecef;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.dialer-tabs button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.dialer-content {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  min-height: 70vh;
+}
+
+/* Manual Dialer Styles */
+.manual-dialer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  gap: 1.5rem;
+  height: 100%;
+}
+
+.contact-panel {
+  grid-column: 1;
+  grid-row: 1;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.contact-panel h2 {
+  margin-top: 0;
+  color: #333;
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 0.5rem;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-field label {
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 0.25rem;
+}
+
+.contact-field span {
+  color: #6c757d;
+}
+
+.phone-numbers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.phone-number-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.phone-type {
+  font-weight: 500;
+  min-width: 60px;
+}
+
+.click-to-dial {
+  padding: 0.25rem 0.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.click-to-dial:hover {
+  background-color: #0056b3;
+}
+
+.demographics-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.call-history {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.call-history-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.call-date {
+  color: #6c757d;
+  min-width: 80px;
+}
+
+.call-outcome {
+  font-weight: 500;
+  min-width: 100px;
+}
+
+.dialer-panel {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.phone-display {
+  background-color: #212529;
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.phone-number {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.call-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.status-indicator.calling {
+  background-color: #ffc107;
+}
+
+.status-indicator.connected {
+  background-color: #28a745;
+  animation: pulse 1.5s infinite;
+}
+
+.status-indicator.ended {
+  background-color: #dc3545;
+}
+
+.call-indicators {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.indicator {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.indicator.muted {
+  background-color: #6c757d;
+  color: white;
+}
+
+.indicator.hold {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.indicator.recording {
+  background-color: #dc3545;
+  color: white;
+  animation: pulse 1.5s infinite;
+}
+
+.dialpad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.dialpad-key {
+  padding: 1rem;
+  background-color: #e9ecef;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.dialpad-key:hover {
+  background-color: #dee2e6;
+}
+
+.call-controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.dial-button, .hangup-button, .control-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  min-width: 100px;
+}
+
+.dial-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.dial-button:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+.dial-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.hangup-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.hangup-button:hover {
+  background-color: #c82333;
+}
+
+.control-button {
+  background-color: #6c757d;
+  color: white;
+}
+
+.control-button:hover {
+  background-color: #5a6268;
+}
+
+.control-button.active {
+  background-color: #007bff;
+}
+
+.script-panel {
+  grid-column: 1;
+  grid-row: 2;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.script-panel h2 {
+  margin-top: 0;
+  color: #333;
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 0.5rem;
+}
+
+.script-content {
+  line-height: 1.6;
+  color: #495057;
+}
+
+.compliance-reminder {
+  background-color: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 4px;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.notes-panel {
+  grid-column: 1;
+  grid-row: 3;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.notes-panel h2 {
+  margin-top: 0;
+  color: #333;
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 0.5rem;
+}
+
+.notes-panel textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  resize: vertical;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+
+.disposition-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.disposition-section label {
+  font-weight: 600;
+  color: #495057;
+}
+
+.disposition-section select {
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.notes-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.save-notes-button, .save-disposition-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.save-notes-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.save-notes-button:hover {
+  background-color: #0056b3;
+}
+
+.save-disposition-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.save-disposition-button:hover {
+  background-color: #218838;
+}
+
+/* Turbo Dialer Styles */
+.turbo-dialer {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 1.5rem;
+  height: 100%;
+}
+
+.queue-panel {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.queue-panel h2 {
+  margin-top: 0;
+  color: #333;
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 0.5rem;
+}
+
+.queue-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin-bottom: 0.25rem;
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #007bff;
+}
+
+.queue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.queue-item {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.queue-contact-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.queue-contact-name {
+  font-weight: 600;
+  color: #333;
+}
+
+.queue-contact-phone {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.queue-item-details {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.queue-status {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.queue-status.ready {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.queue-status.calling {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.queue-status.completed {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+.queue-status.rejected {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.queue-priority {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.queue-priority.high {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.queue-priority.medium {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.queue-priority.low {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.queue-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.accept-button, .reject-button {
+  padding: 0.25rem 0.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.accept-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.accept-button:hover {
+  background-color: #218838;
+}
+
+.reject-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.reject-button:hover {
+  background-color: #c82333;
+}
+
+.quick-disposition {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.disposition-button {
+  padding: 0.25rem 0.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  background-color: #6c757d;
+  color: white;
+}
+
+.disposition-button:hover {
+  background-color: #5a6268;
+}
+
+.turbo-controls {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.turbo-controls button {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.start-campaign-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.start-campaign-button:hover {
+  background-color: #218838;
+}
+
+.pause-campaign-button {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.pause-campaign-button:hover {
+  background-color: #e0a800;
+}
+
+.stop-campaign-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.stop-campaign-button:hover {
+  background-color: #c82333;
+}
+
+.performance-dashboard {
+  grid-column: 2;
+  grid-row: 2;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.performance-dashboard h2 {
+  margin-top: 0;
+  color: #333;
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 0.5rem;
+}
+
+.performance-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.metric-label {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin-bottom: 0.25rem;
+  text-align: center;
+}
+
+.metric-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #007bff;
+}
+
+.agent-status-panel {
+  grid-column: 2;
+  grid-row: 3;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.agent-status-panel h2 {
+  margin-top: 0;
+  color: #333;
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 0.5rem;
+}
+
+.status-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.status-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.status-label {
+  font-weight: 500;
+  color: #495057;
+}
+
+.status-value {
+  font-weight: 600;
+}
+
+.status-value.available {
+  color: #28a745;
+}
+
+.status-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.status-button {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  background-color: #6c757d;
+  color: white;
+}
+
+.status-button:hover {
+  background-color: #5a6268;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .manual-dialer {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto auto;
+  }
+  
+  .contact-panel,
+  .dialer-panel,
+  .script-panel,
+  .notes-panel {
+    grid-column: 1;
+  }
+  
+  .contact-panel {
+    grid-row: 1;
+  }
+  
+  .dialer-panel {
+    grid-row: 2;
+  }
+  
+  .script-panel {
+    grid-row: 3;
+  }
+  
+  .notes-panel {
+    grid-row: 4;
+  }
+  
+  .turbo-dialer {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+  }
+  
+  .queue-panel {
+    grid-row: 1;
+  }
+  
+  .turbo-controls {
+    grid-row: 2;
+  }
+  
+  .performance-dashboard {
+    grid-row: 3;
+  }
+  
+  .agent-status-panel {
+    grid-row: 4;
+  }
+}
