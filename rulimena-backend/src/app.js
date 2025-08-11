@@ -36,6 +36,12 @@ app.use('/api/contacts', require('./routes/contactRoutes'));
 
 // Campaign routes
 app.use('/api/campaigns', require('./routes/campaignRoutes'));
+ 
+// Initialize SIP service
+const sipService = require('./services/sipService');
+sipService.initialize().catch(error => {
+  console.error('Failed to initialize SIP service:', error);
+});
 
 // Initialize WebSocket
 const { initializeWebSocket } = require('./utils/websocket');

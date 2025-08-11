@@ -8,7 +8,10 @@
     "dev": "nodemon src/app.js",
     "test": "jest",
     "migrate": "node src/config/migrate.js",
-    "test-mysql": "node test-mysql.js"
+    "test-mysql": "node test-mysql.js",
+    "check-admin": "node scripts/check-admin-user.js",
+    "create-admin": "node scripts/create-admin-user.js",
+    "add-dummy-contacts": "node scripts/add-dummy-contacts.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
@@ -21,7 +24,9 @@
     "mysql2": "^3.14.3",
     "redis": "^4.6.5",
     "socket.io": "^4.6.1",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "sip": "^0.0.2",
+    "asterisk-manager": "^0.2.0"
   },
   "devDependencies": {
     "eslint": "^8.36.0",

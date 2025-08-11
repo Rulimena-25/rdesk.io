@@ -190,12 +190,52 @@ async function migrate() {
     
     console.log('System settings table created successfully');
 
-    console.log('Database migration completed successfully!');
-    process.exit(0);
-  } catch (error) {
-    console.error('Database migration failed:', error);
-    process.exit(1);
-  }
+   // Create sip_config table for storing SIP account configurations
+   await db.execute(`
+     CREATE TABLE IF NOT EXISTS sip_config (
+       id INT AUTO_INCREMENT PRIMARY KEY,
+       userId INT NOT NULL,
+       sipUsername VARCHAR(100) NOT NULL,
+       sipPassword VARCHAR(100) NOT NULL,
+       sipServer VARCHAR(100) NOT NULL,
+       sipPort INT DEFAULT 5060,
+       isActive BOOLEAN DEFAULT TRUE,
+       createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+       updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+       INDEX idx_userId (userId),
+       INDEX idx_sipUsername (sipUsername),
+       FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE
+     )
+   `);
+   
+   console.log('SIP config table created successfully');
+
+   // Create sip_servers table for storing SIP server configurations
+   await db.execute(`
+     CREATE TABLE IF NOT EXISTS sip_servers (
+       id INT AUTO_INCREMENT PRIMARY KEY,
+       name VARCHAR(100) NOT NULL,
+       host VARCHAR(100) NOT NULL,
+       port INT DEFAULT 5060,
+       transport ENUM('udp', 'tcp', 'tls') DEFAULT 'udp',
+       username VARCHAR(100),
+       password VARCHAR(100),
+       isActive BOOLEAN DEFAULT TRUE,
+       createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+       updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+       INDEX idx_name (name),
+       INDEX idx_host (host)
+     )
+   `);
+   
+   console.log('SIP servers table created successfully');
+
+   console.log('Database migration completed successfully!');
+   process.exit(0);
+ } catch (error) {
+   console.error('Database migration failed:', error);
+   process.exit(1);
+ }
 }
 
 migrate();

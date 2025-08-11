@@ -100,7 +100,26 @@ rulimena-backend/
 - `npm start` - Start the server
 - `npm run dev` - Start the server in development mode with nodemon
 - `npm run migrate` - Run database migration
+- `npm run check-admin` - Check if admin user exists
+- `npm run create-admin` - Create admin user if not exists
 - `npm test` - Run tests
+
+### Admin User Management
+
+This system includes scripts for managing admin users. See [scripts/README.md](scripts/README.md) for detailed instructions on how to check for and create admin users.
+
+To create the default admin user with the following credentials:
+- Firstname: Anderson
+- Lastname: Soplanit
+- Username: SuperAdmin
+- Email: anderson@rdesk.io
+- Password: rdesk0505
+- Phone Number: 628123351700
+
+Run the following command after setting up the database:
+```bash
+npm run create-admin
+```
 
 ## Contributing
 

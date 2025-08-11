@@ -114,6 +114,45 @@ const initializeWebSocket = (server) => {
       });
     });
 
+    // Handle dial request from frontend
+    socket.on('dial-request', async (data) => {
+      try {
+        const { phoneNumber, campaignId, contactId } = data;
+        
+        // Validate required fields
+        if (!phoneNumber) {
+          socket.emit('dial-error', { message: 'Phone number is required' });
+          return;
+        }
+
+        // Import SIP service here to avoid circular dependencies
+        const sipService = require('../services/sipService');
+        
+        // Make the call using SIP service
+        const call = await sipService.makeCall(
+          phoneNumber,
+          socket.user.userId,
+          campaignId,
+          contactId
+        );
+        
+        // Emit success response
+        socket.emit('dial-success', {
+          callId: call.id,
+          phoneNumber,
+          message: 'Call initiated successfully'
+        });
+        
+        console.log(`Call initiated by user ${socket.user.userId} to ${phoneNumber}`);
+      } catch (error) {
+        console.error('Error making call:', error);
+        socket.emit('dial-error', {
+          message: 'Failed to initiate call',
+          error: error.message
+        });
+      }
+    });
+
     // Handle disconnect
     socket.on('disconnect', () => {
       console.log(`User ${socket.user.userId} disconnected`);
